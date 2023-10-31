@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'base.apps.BaseConfig',
     'bootstrap4',
+    'social_django',
 ]
 
 MIDDLEWARE = [
@@ -65,6 +66,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -122,6 +125,29 @@ STATIC_URL = 'static/'
 
 LOGIN_URL = '/sign-in'
 LOGIN_REDIRECT_URL = '/'
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+
+]
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = "269043076101629"
+SOCIAL_AUTH_FACEBOOK_SECRET = "59dd9b229701faa66d7c79567a166295"
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'fields': 'id, name, email'
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USER_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'emmanueldev645@gmail.com'
+EMAIL_HOST_PASSWORD = 'KenahGmail@562'
+DEFAULT_FROM_EMAIL = 'fast-delivery <no-reply@fastdelivery.localhost'
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

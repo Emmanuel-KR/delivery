@@ -1,0 +1,4 @@
+#social media authentication/federated user.
+https://python-social-auth.readthedocs.io/en/latest/configuration/django.html
+#emails configurations and settings
+https://docs.djangoproject.com/en/4.2/topics/email/#smtp-backend

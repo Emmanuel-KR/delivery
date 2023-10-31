@@ -14,8 +14,8 @@ class SignUpForm(UserCreationForm):
         fields = ('email', 'first_name', 'last_name', 'password1', 'password2')
 
     # to validate the email
-    def clean_data(self):
-        email = self.cleaned_data('email').lower()
+    def clean_email(self):
+        email = self.cleaned_data['email'].lower()
         if User.objects.filter(email=email):
-            raise ValidationError('This email address already exist')
+            raise ValidationError('This email address already exist.')
         return email
